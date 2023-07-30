@@ -12,7 +12,7 @@ function buildUserDataScript(githubRegistrationToken, label) {
       'set -x',
       `cd "${config.input.runnerHomeDir}"`,
       'export RUNNER_ALLOW_RUNASROOT=1',
-      `./config.sh --url https://github.com/${config.githubContext.owner}/${config.githubContext.repo} --token ${githubRegistrationToken} --labels ${label} --unattended --ephemeral`,
+      `./config.sh --url https://github.com/${config.githubContext.owner}/${config.githubContext.repo} --token ${githubRegistrationToken} --pat ${githubRegistrationToken} --labels ${label} --unattended --ephemeral`,
       './run.sh',
     ];
   } else {
@@ -24,7 +24,7 @@ function buildUserDataScript(githubRegistrationToken, label) {
       'curl -O -L https://github.com/actions/runner/releases/download/v2.307.1/actions-runner-linux-${RUNNER_ARCH}-2.307.1.tar.gz',
       'tar xzf ./actions-runner-linux-${RUNNER_ARCH}-2.307.1.tar.gz',
       'export RUNNER_ALLOW_RUNASROOT=1',
-      `./config.sh --url https://github.com/${config.githubContext.owner}/${config.githubContext.repo} --token ${githubRegistrationToken} --labels ${label} --unattended --ephemeral`,
+      `./config.sh --url https://github.com/${config.githubContext.owner}/${config.githubContext.repo} --token ${githubRegistrationToken} --pat ${githubRegistrationToken} --labels ${label} --unattended --ephemeral`,
       './run.sh',
     ];
   }
